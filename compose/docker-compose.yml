@@ -17,6 +17,9 @@ services:
           - slurmctld
     image: gromr1/slurmctld
     stdin_open: true
+    ports:
+      - "2222:22" # Map port 2222 on the host to port 22 in the slurmctld container
+
   slurmd:
     container_name: slurmd
     environment:
@@ -35,3 +38,5 @@ services:
     depends_on:
       - slurmctld
     stdin_open: true
+    ports:
+      - "2223:22" # Map port 2223 on the host to port 22 in the slurmd container
